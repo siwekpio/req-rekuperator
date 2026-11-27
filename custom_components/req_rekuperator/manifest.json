@@ -1,0 +1,21 @@
+{
+  "domain": "req_rekuperator",
+  "name": "Rekuperator reQ",
+  "categories": [
+    "climate.fans_ventilation"
+  ],
+  "codeowners": [
+    "@siwekpio"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "mqtt",
+    "http"
+  ],
+  "documentation": "https://github.com/siwekpio/req-rekuperator#readme",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/siwekpio/req-rekuperator/issues",
+  "requirements": [],
+  "version": "0.1.12"
+}

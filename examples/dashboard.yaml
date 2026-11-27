@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: GPL-3.0-only
+# Przykładowy panel Rekuperator reQ. Nie nadpisuj istniejącego dashboardu bez kopii zapasowej.
+title: Rekuperator reQ
+views:
+  - title: Sterowanie
+    path: sterowanie
+    type: panel
+    cards:
+      - type: custom:req-rekuperator-card
+        chart_path: wykresy
+        # entry_id: 0123456789abcdef  # wymagane przy wielu urządzeniach
+        airing_default_minutes: 15
+        filter_cycle_days: 90  # domyślna długość cyklu, można dostosować do urządzenia
+  - title: Wykresy
+    path: wykresy
+    type: panel
+    cards:
+      - type: custom:req-rekuperator-charts
+        back_path: sterowanie
+        default_range: 1 dzień
+        # entry_id: 0123456789abcdef
+        # Domyślne trzy wykresy są wbudowane; można je nadpisać przez charts: []

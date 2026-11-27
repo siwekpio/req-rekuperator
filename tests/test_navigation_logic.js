@@ -1,0 +1,32 @@
+/* Copyright (c) 2026 siwekpio; SPDX-License-Identifier: GPL-3.0-only */
+// Verifies navigation logic without web access or a running HA instance.
+const fs = require('fs');
+const vm = require('vm');
+const assert = require('assert');
+const source = fs.readFileSync(__dirname+'/../www/rekuperator-js.js', 'utf8');
+const navCode = source.slice(source.indexOf('function reqNavigationTarget('), source.indexOf('const REQ_COMPAT_KEYS'));
+let location = { pathname: '/custom-dashboard/sterowanie' };
+const events=[];
+const context = {window: {location, history: {pushState(_state, _title, path) {location.pathname = path;}}, dispatchEvent(e) {events.push(e.type);}}, Event: class {constructor(type){this.type=type;}}};
+vm.createContext(context);
+vm.runInContext(navCode, context);
+assert.equal(context.reqNavigationTarget('wykresy','/panel-req-public/wykresy'), '/custom-dashboard/wykresy');
+assert.equal(context.reqNavigationTarget('wykresy','wykresy'), '/custom-dashboard/wykresy');
+context.reqNavigateToSibling('wykresy','/panel-req-public/wykresy');
+assert.equal(location.pathname, '/custom-dashboard/wykresy');
+context.reqNavigateToSibling('sterowanie','/panel-req-public/sterowanie');
+assert.equal(location.pathname, '/custom-dashboard/sterowanie');
+assert.deepEqual(events,['location-changed','location-changed']);
+assert.equal(context.reqNavigationTarget('wykresy','/different-dashboard/charts'), '/different-dashboard/charts');
+location.pathname='/another-panel';
+assert.equal(context.reqNavigationTarget('wykresy','wykresy'), '/another-panel/wykresy');
+location.pathname='/rekuperator-req/sterowanie-2';
+assert.equal(context.reqNavigationTarget('wykresy','wykresy-2'), '/rekuperator-req/wykresy-2');
+location.pathname='/rekuperator-req/wykresy-2';
+assert.equal(context.reqNavigationTarget('sterowanie','sterowanie-2'), '/rekuperator-req/sterowanie-2');
+location.pathname='/dowolny-panel/0';
+assert.equal(context.reqNavigationTarget('wykresy','moja-historia'), '/dowolny-panel/moja-historia');
+location.pathname='/dowolny-panel/custom-slug/';
+assert.equal(context.reqNavigationTarget('sterowanie','inny-slug'), '/dowolny-panel/inny-slug');
+assert.equal(context.reqNavigationTarget('wykresy','/inna-tablica/dane'), '/inna-tablica/dane');
+console.log('Navigation logic: OK');

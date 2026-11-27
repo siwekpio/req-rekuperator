@@ -1,0 +1,24 @@
+<!-- SPDX-License-Identifier: GPL-3.0-only -->
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body style="background:#121a21;color:white;margin:0;font:14px Arial"><div id="control"></div><div id="charts"></div>
+<script src="../www/rekuperator-js.js"></script>
+<script>
+const entry_id='demo-integration-entry';
+const mock={
+  temperatura_czerpnia:7.2,temperatura_wyrzutnia:11.6,temperatura_nawiew:21,temperatura_wywiew:21.8,
+  aktualna_temperatura:21,wilgotnosc:42,co2:560,aktualny_tryb:'Tryb ręczny',stan_bypassu:'Zamknięty (Auto)',
+  temperatura_komfortu:22,moc_wentylatora_nawiewnego:10,moc_wentylatora_wywiewnego:13,
+  predkosc_nawiewu:70,predkosc_wywiewu:100,status_komunikat:'Urządzenie włączone',
+  dni_do_wymiany_filtrow:88,sumaryczny_pobor_mocy:23,sprawnosc:95,
+  grzalka_wstepna:'off',zasilanie:'on',ustaw_temp_komfortu:22,zadany_nawiew_reczny:80,zadany_wyciag_reczny:110,
+  aktywuj_tryb_inteligentny:'unknown',aktywuj_urlop:'unknown',reset_filtrow:'unknown'
+};
+const states=Object.fromEntries(Object.entries(mock).map(([key,value])=>{
+  const domain=key==='grzalka_wstepna'?'binary_sensor':key==='zasilanie'?'switch':key.startsWith('zadany_')||key==='ustaw_temp_komfortu'?'number':key.startsWith('aktywuj_')||key==='reset_filtrow'?'button':'sensor';
+  return [domain+'.my_req_'+key,{state:String(value),attributes:{reqnet_entry_id:entry_id,reqnet_key:key,min:80,max:370,step:10}}];
+}));
+const calls=[];
+const hass={states,callService:async(domain,service,data)=>{calls.push({domain,service,data});},callApi:async()=>[]};
+const ctl=document.createElement('req-rekuperator-card');ctl.setConfig({entry_id,chart_path:'wykresy'});document.getElementById('control').appendChild(ctl);ctl.hass=hass;
+const chart=document.createElement('req-rekuperator-charts');chart.setConfig({entry_id,back_path:'sterowanie'});document.getElementById('charts').appendChild(chart);chart.hass=hass;
+window.TEST={ctl,chart,calls,hass};
+</script></body></html>

@@ -1,0 +1,29 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.DS_Store
+# Nie dopuszczać do przypadkowego publikowania danych osobistych ani archiwów
+.env
+.env.*
+*.zip
+.storage/
+secrets.yaml
+configuration.yaml
+mqtt.yaml
+switches.yaml
+automations.yaml
+scripts.yaml
+*.log
+
+# Lokalne obrazy generowane przez testy (nie publikować w README)
+preview_*.png
+
+# Private working materials
+DOKUMENTACJA_PRYWATNA/
+archiwum/
+RAPORT_*.md
+PROMPT_WZNOWIENIE.md
+PLAN_TESTOW.md
+ROADMAP.md
+SPECYFIKACJA_REQNET.md

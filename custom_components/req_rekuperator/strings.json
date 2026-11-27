@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure reQ Rekuperator",
+        "description": "Configure MQTT in the device first. Enter a local IPv4 address to automatically read MAC. For older Wi-Fi firmware you may provide MAC manually.",
+        "data": {
+          "name": "Device name",
+          "host": "Local device IPv4 (optional if MAC supplied)",
+          "mac": "MAC address (optional when HTTP API is available)"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Enter a private local IPv4 address",
+      "invalid_mac": "Invalid MAC address",
+      "mac_mismatch": "MAC does not match the local device",
+      "cannot_connect": "Cannot read device API; enter MAC manually if Wi-Fi firmware is older",
+      "mac_required": "IP or MAC is required"
+    },
+    "abort": {"already_configured": "Device already configured"}
+  }
+}

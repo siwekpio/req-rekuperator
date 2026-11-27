@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Dodaj rekuperator reQ",
+        "description": "Najpierw skonfiguruj broker MQTT w urządzeniu. Podaj lokalny adres IPv4, aby odczytać MAC automatycznie. Przy starszym module Wi-Fi możesz podać MAC ręcznie.",
+        "data": {
+          "name": "Nazwa urządzenia",
+          "host": "Lokalny IPv4 rekuperatora (opcjonalny przy ręcznym MAC)",
+          "mac": "Adres MAC (opcjonalny przy działającym API HTTP)"
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "Podaj prywatny adres IPv4",
+      "invalid_mac": "Nieprawidłowy MAC",
+      "mac_mismatch": "MAC nie zgadza się z urządzeniem",
+      "cannot_connect": "Brak połączenia z API; dla starszego Wi-Fi wprowadź MAC ręcznie",
+      "mac_required": "Wymagany adres IP lub MAC"
+    },
+    "abort": {"already_configured": "Urządzenie jest już skonfigurowane"}
+  }
+}

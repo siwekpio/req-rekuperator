@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: GPL-3.0-only
+name: Marketplace readiness
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  hacs:
+    # Official validator rejects private repositories; cannot run until publication.
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Validate with HACS/Marketplace
+        uses: hacs/action@1ebf01c408f29afcb6406bd431bc98fd8cbb15aa # validated main on 2026-11-24
+        with:
+          category: integration
+          comment: false
+  hassfest:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Validate integration with hassfest
+        uses: home-assistant/actions/hassfest@9e9565e68f5a70d874202871f4c4064d23814235 # master on 2026-11-24

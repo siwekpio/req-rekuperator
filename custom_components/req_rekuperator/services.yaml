@@ -1,0 +1,48 @@
+# SPDX-License-Identifier: GPL-3.0-only
+manual_airflow:
+  name: Ustaw przepływy ręczne
+  description: Ustaw obie nastawy jednocześnie. Czeka na świeży odczyt potwierdzający tryb i obie nastawy. Brak potwierdzenia jest zgłaszany jako błąd.
+  fields:
+    entry_id:
+      required: true
+      example: "config_entry_id"
+      selector: {text: {}}
+    supply:
+      required: true
+      example: 100
+      selector: {number: {min: 80, max: 370, step: 10, unit_of_measurement: "m³/h"}}
+    extract:
+      required: true
+      example: 110
+      selector: {number: {min: 80, max: 370, step: 10, unit_of_measurement: "m³/h"}}
+airing:
+  name: Uruchom przewietrzanie
+  fields:
+    entry_id:
+      required: true
+      selector: {text: {}}
+    minutes:
+      required: true
+      selector: {number: {min: 5, max: 95, step: 1, unit_of_measurement: "min"}}
+bypass:
+  name: Ustaw bypass
+  description: "0 – zamknięty ręcznie; 1 – otwarty ręcznie; 2 – automatyczny"
+  fields:
+    entry_id:
+      required: true
+      selector: {text: {}}
+    mode:
+      required: true
+      selector:
+        select:
+          options:
+            - {value: "0", label: "Zamknięty ręcznie"}
+            - {value: "1", label: "Otwarty ręcznie"}
+            - {value: "2", label: "Automatyczny"}
+replace_filters:
+  name: Reset licznika filtrów
+  description: Polecenie jest wysyłane tylko raz. Potwierdzamy wyłącznie wzrost liczby dni zgłoszony przez centralę; w pozostałych przypadkach wynik jest niepewny.
+  fields:
+    entry_id:
+      required: true
+      selector: {text: {}}

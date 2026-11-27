@@ -1,0 +1,19 @@
+# Zgłoszenie zgodności urządzenia Rekuperator reQ
+
+Aby z czasem zbudować **zweryfikowane** powiązanie między technicznym `DeviceType` i nazwą handlową, można zgłosić informacje z własnego urządzenia. **Nie przypisujemy automatycznie nazw modeli na podstawie numeru typu.**
+
+**Wzór zgłoszenia (bez danych osobowych i sieciowych):**
+
+- **Model z tabliczki znamionowej rekuperatora:** …
+- **Typ urządzenia (DeviceType), odczyt z lokalnego API:** …
+- **Firmware centrali:** …
+- **Wersja API modułu Wi-Fi:** …
+- **Home Assistant Core / Rekuperator reQ:** … / …
+- **Potwierdzone funkcje:** odczyty MQTT / historia / diagnostyka HTTP / inne, jeśli rzeczywiście testowane
+- **Ograniczenia lub błędy:** …
+
+Pole jest dostępne przez **Filtry → Ustawienia (⚙) → Rekuperator → Informacje o urządzeniu**. Jeżeli pokazuje „Brak danych”, sprawdź prawidłowość lokalnej diagnostyki HTTP. Nie włączaj dostępu do internetu tylko po to, by odczytać `DeviceType`.
+
+**Nie umieszczaj w publicznych zgłoszeniach:** adresu MAC, adresu IP, haseł do MQTT, nazw użytkowników, adresów instalacji, tokenów, pełnych logów zawierających sekrety, zdjęć tabliczek z numerem seryjnym ani zrzutów ujawniających te dane. Własne tabliczki identyfikacyjne możesz przepisać bez numerów seryjnych.
+
+Weryfikacja mapowania modelu wymaga co najmniej jednoznacznego oznaczenia handlowego i wiarygodnego odczytu `DeviceType`; pojedynczy zgłoszony numer nie dowodzi zgodności całej serii urządzeń.
