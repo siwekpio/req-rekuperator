@@ -8,6 +8,8 @@ Monitoruj i steruj swoim rekuperatorem REQNET bezpośrednio z Home Assistant. Te
 
 **Niezależność:** projekt nie jest tworzony, sponsorowany, zatwierdzony ani oficjalnie wspierany przez producenta urządzeń REQNET. Nazwy handlowe producenta służą wyłącznie wskazaniu protokołu i kompatybilności.
 
+[![Otwórz Rekuperator reQ w Marketplace swojego Home Assistant](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=siwekpio&repository=req-rekuperator&category=integration)
+
 ## Co oferuje integracja?
 
 - Podgląd temperatur, przepływów powietrza, wilgotności i CO₂ (jeśli urządzenie udostępnia te dane).
@@ -86,18 +88,30 @@ Pobierz i rozpakuj paczkę instalacyjną z [Releases](https://github.com/siwekpi
 
 ### 3. Zainstaluj integrację
 
-1. Wykonaj pełną kopię zapasową Home Assistant.
-2. Pobierz i rozpakuj paczkę instalacyjną z [Releases](https://github.com/siwekpio/req-rekuperator/releases), jeśli jeszcze tego nie zrobiłeś. Skopiuj cały folder `custom_components/req_rekuperator` do `/config/custom_components/req_rekuperator`.
-3. Uruchom ponownie Home Assistant.
-4. Otwórz **Ustawienia → Urządzenia i usługi → Dodaj integrację** i wyszukaj **Rekuperator reQ**.
-5. Podaj prywatny adres IPv4 modułu lub jego MAC. Możesz podać sam MAC, jeśli lokalne HTTP nie działa. Sprawdź, czy encje pokazują rzeczywiste odczyty.
+Wykonaj pełną kopię zapasową Home Assistant przed instalacją.
+
+**Marketplace (Katalog społeczności) — metoda zalecana**
+
+1. Kliknij przycisk My Home Assistant powyżej lub otwórz **Ustawienia → Marketplace** (Katalog społeczności).
+2. Wyszukaj **Rekuperator reQ**. Jeśli nie ma jej w katalogu, wybierz **Dodaj z linku** i wpisz `https://github.com/siwekpio/req-rekuperator`. Jeżeli pojawi się wybór typu, wybierz **Integracja**. Przy dodawaniu własnego repozytorium połącz konto GitHub zgodnie z komunikatami HA.
+3. Otwórz stronę Rekuperator reQ, kliknij **Zainstaluj**, wybierz dostępne stabilne wydanie i potwierdź. Uruchom ponownie Home Assistant.
+
+Nie trzeba instalować osobnego HACS w Home Assistant 2026.11. Integracja jest projektem społecznościowym, nie jest oficjalnie weryfikowana ani wspierana przez Home Assistant. [Dokumentacja Marketplace](https://www.home-assistant.io/integrations/marketplace/).
+
+**Alternatywa — instalacja ręczna**
+
+Pobierz i rozpakuj paczkę instalacyjną z [Releases](https://github.com/siwekpio/req-rekuperator/releases), jeśli jeszcze tego nie zrobiłeś. Skopiuj cały folder `custom_components/req_rekuperator` do `/config/custom_components/req_rekuperator` i uruchom ponownie Home Assistant. Wybierz jedną metodę instalacji, nie mieszaj plików różnych wersji.
+
+**Konfiguracja integracji (obie metody)**
+
+Otwórz **Ustawienia → Urządzenia i usługi → Dodaj integrację**, wyszukaj **Rekuperator reQ** i podaj prywatny adres IPv4 modułu lub jego MAC. Możesz podać sam MAC, jeśli lokalne HTTP nie działa. Sprawdź, czy encje pokazują rzeczywiste odczyty. Jeżeli integracja jest już skonfigurowana, zachowaj istniejące wpisy — nie dodawaj urządzeń ponownie.
 
 ### 4. Dodaj panel i wykresy
 
 Włącz tryb zaawansowany w profilu HA, jeśli opcja zasobów nie jest widoczna. W **Ustawienia → Panele → Zasoby** dodaj zasób typu **Moduł JavaScript**:
 
 ```text
-/req-rekuperator/rekuperator-js.js?v=0112
+/req-rekuperator/rekuperator-js.js?v=0113
 ```
 
 Jeżeli zasoby są zarządzane w YAML, dodaj ten sam URL do istniejącej konfiguracji zasobów. Nie twórz duplikatów.
@@ -106,7 +120,7 @@ Utwórz panel z dwiema zakładkami (Sterowanie i Wykresy). W edytorze YAML panel
 
 ## Aktualizacja i rozwiązywanie problemów
 
-Zrób backup, podmień cały katalog integracji, uruchom HA ponownie i zaktualizuj istniejący zasób JavaScript. [Aktualizacja i powrót do poprzedniej wersji](docs/INSTALACJA_I_AKTUALIZACJA.md).
+Zrób backup. Jeśli integracją zarządza Marketplace, wybierz aktualizację w **Ustawienia → Aktualizacje**; w instalacji ręcznej podmień cały katalog integracji. Uruchom HA ponownie i zaktualizuj istniejący zasób JavaScript. Nie usuwaj wpisów integracji ani historii. [Aktualizacja i powrót do poprzedniej wersji](docs/INSTALACJA_I_AKTUALIZACJA.md).
 
 - **Brak odczytów?** Sprawdź broker, konto MQTT, adres MAC modułu i logi HA.
 - **Brak wykresów?** Sprawdź Recorder, zakres czasu i właściwy wpis urządzenia.

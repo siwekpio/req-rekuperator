@@ -8,6 +8,8 @@ Monitor and control your REQNET heat recovery ventilation unit directly in Home 
 
 **Independence:** the project is not created, sponsored, endorsed or officially supported by the REQNET device manufacturer. Manufacturer trade names are used solely to identify the protocol and compatibility.
 
+[![Open Rekuperator reQ in your Home Assistant Marketplace](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=siwekpio&repository=req-rekuperator&category=integration)
+
 ## Features
 
 - Temperatures, airflow, humidity and CO₂ (where provided by the device).
@@ -86,18 +88,30 @@ Download and extract the manual installation package from [Releases](https://git
 
 ### 3. Install the integration
 
-1. Make a full Home Assistant backup.
-2. Download and extract the manual installation package from [Releases](https://github.com/siwekpio/req-rekuperator/releases) if you have not already done so. Copy the entire `custom_components/req_rekuperator` directory from the package to `/config/custom_components/req_rekuperator`.
-3. Restart Home Assistant.
-4. Open **Settings → Devices & services → Add integration** and search for **Rekuperator reQ**.
-5. Enter the module's private IPv4 address or MAC. MAC alone is supported if local HTTP is unavailable. Check that entities show actual readings.
+Make a full Home Assistant backup before installation.
+
+**Marketplace — recommended method**
+
+1. Use the My Home Assistant button above or open **Settings → Marketplace**.
+2. Search for **Rekuperator reQ**. If it is not listed, choose **Add from link** and enter `https://github.com/siwekpio/req-rekuperator`. If prompted for the type, select **Integration**. Connect GitHub when Home Assistant asks you to do so for a custom repository.
+3. Open Rekuperator reQ, select **Install**, choose the available stable release and confirm. Restart Home Assistant.
+
+A separate HACS installation is not needed on Home Assistant 2026.11. This is a community project, not officially reviewed or supported by Home Assistant. [Marketplace documentation](https://www.home-assistant.io/integrations/marketplace/).
+
+**Alternative — manual installation**
+
+Download and extract the manual installation archive from [Releases](https://github.com/siwekpio/req-rekuperator/releases) if you have not already done so. Copy the entire `custom_components/req_rekuperator` directory to `/config/custom_components/req_rekuperator` and restart Home Assistant. Choose one installation method; do not mix files from different versions.
+
+**Configure the integration (both methods)**
+
+Open **Settings → Devices & services → Add integration**, search for **Rekuperator reQ** and enter the module's private IPv4 address or MAC. MAC alone is supported if local HTTP is unavailable. Check that entities show actual readings. If the integration is already configured, keep existing entries; do not add the devices again.
 
 ### 4. Add the panel and charts
 
 Enable advanced mode in your HA profile if Resources is hidden. Under **Settings → Dashboards → Resources**, add a **JavaScript module** resource:
 
 ```text
-/req-rekuperator/rekuperator-js.js?v=0112
+/req-rekuperator/rekuperator-js.js?v=0113
 ```
 
 For YAML-managed resources, add the same URL to the existing resource configuration. Do not create duplicates.
@@ -106,7 +120,7 @@ Create a dashboard with two views (Control and Charts). Use [examples/dashboard.
 
 ## Updating and troubleshooting
 
-Back up HA, replace the entire component directory, restart HA and update the existing JavaScript resource. [Update and rollback instructions](docs/INSTALLATION.en.md).
+Back up HA. For Marketplace-managed installations, use **Settings → Updates**; for manual installations, replace the entire component directory. Restart HA and update the existing JavaScript resource. Keep integration entries and history. [Update and rollback instructions](docs/INSTALLATION.en.md).
 
 - **No readings?** Check the broker, MQTT credentials, module MAC and HA logs.
 - **No charts?** Check Recorder, time range and the correct device entry.

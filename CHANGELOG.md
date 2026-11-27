@@ -1,5 +1,13 @@
 # Historia zmian / Changelog
 
+## 0.1.13 — dokumentacja Marketplace / Marketplace documentation
+
+- Marketplace jako zalecana metoda instalacji i aktualizacji; przycisk My Home Assistant w README PL/EN.
+- Zachowano instalację ręczną, instrukcję MQTT i wskazówki powrotu z kopii zapasowej.
+- Zaktualizowano oznaczenia wersji integracji i kart. Bez zmian funkcjonalnych.
+
+English: Marketplace installation and update guidance, My Home Assistant links in both READMEs, manual installation and MQTT instructions retained, version labels updated; no functional changes.
+
 ## 0.1.12 — pierwsze wydanie na GPL v3 / first GPL v3 release
 
 - Monitorowanie i sterowanie rekuperatorem przez MQTT, panel i wykresy historii.

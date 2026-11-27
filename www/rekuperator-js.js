@@ -1,5 +1,5 @@
 /* Copyright (c) 2026 siwekpio; SPDX-License-Identifier: GPL-3.0-only */
-/* Rekuperator reQ integration frontend 0.1.12. */
+/* Rekuperator reQ integration frontend 0.1.13. */
 /* Public REQNET adapter. No fixed MAC, entity names or direct MQTT calls. */
 
 // Resolve sibling Lovelace views using the CURRENT dashboard route.
@@ -895,7 +895,7 @@ ha-card{min-height:0!important;height:auto;border-radius:10px;padding:9px!import
     const tab=this._settingsTab==='rekuperator'?'rekuperator':'karta';
     const label=this._simulation.enabled?'Zakończ test wizualizacji':'Test wizualizacji';
     const section=tab==='karta'
-      ? `<section class="settings-section" id="settings-karta" role="tabpanel" aria-labelledby="settings-tab-karta"><h3>Karta</h3><p>Wersja karty: <strong>0.1.12</strong></p><p>Sprawdź wygląd bypassu i grzałki bez zmiany parametrów urządzenia.</p><button type="button" class="btn" data-action="simulation">${this._esc(label)}</button></section>`
+      ? `<section class="settings-section" id="settings-karta" role="tabpanel" aria-labelledby="settings-tab-karta"><h3>Karta</h3><p>Wersja karty: <strong>0.1.13</strong></p><p>Sprawdź wygląd bypassu i grzałki bez zmiany parametrów urządzenia.</p><button type="button" class="btn" data-action="simulation">${this._esc(label)}</button></section>`
       : `<section class="settings-section" id="settings-rekuperator" role="tabpanel" aria-labelledby="settings-tab-rekuperator"><button type="button" class="settings-accordion" data-action="settings-info-toggle" aria-expanded="${this._deviceInfoExpanded?'true':'false'}" aria-controls="settings-info"><span>Informacje o urządzeniu</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div id="settings-info" class="settings-accordion-content" ${this._deviceInfoExpanded?'':'hidden'}><div data-settings-diagnostics></div></div></section>`;
     this.shadowRoot.querySelector('#modal-root').innerHTML=`<div class="overlay"><section class="dialog settings-dialog" role="dialog" aria-modal="true" aria-label="Ustawienia karty i rekuperatora"><h2>Ustawienia</h2><div class="settings-tabs" role="tablist" aria-label="Ustawienia"><button type="button" class="settings-tab" id="settings-tab-karta" role="tab" aria-selected="${tab==='karta'}" aria-controls="settings-karta" data-action="settings-tab" data-settings-tab="karta">Karta</button><button type="button" class="settings-tab" id="settings-tab-rekuperator" role="tab" aria-selected="${tab==='rekuperator'}" aria-controls="settings-rekuperator" data-action="settings-tab" data-settings-tab="rekuperator">Rekuperator</button></div>${section}<div class="dialog-actions"><button type="button" class="btn primary" data-action="close">Zamknij</button></div></section></div>`;
     this._updateSettingsDiagnostics();
@@ -993,7 +993,7 @@ window.customCards=window.customCards||[];window.customCards.push({type:'req-rek
 
 (()=>{
 /*
- * Rekuperator reQ 0.1.12 — wykresy Canvas (zintegrowane)
+ * Rekuperator reQ 0.1.13 — wykresy Canvas (zintegrowane)
  * Chart rendering is self-contained and does not use external charting libraries.
  * History source: Home Assistant Recorder REST API.
  * Live refresh of today's range; preserve zoom/pan while refreshing.
@@ -1001,7 +1001,7 @@ window.customCards=window.customCards||[];window.customCards.push({type:'req-rek
  * Exact Recorder state-transition overlays (no inferred/backdated bypass operation).
  */
 
-const VERSION = '0.1.12';
+const VERSION = '0.1.13';
 const RANGE_OPTIONS = ['1 dzień', '3 dni', '7 dni', 'Od–do'];
 const RANGE_DAYS = { '1 dzień': 1, '3 dni': 3, '7 dni': 7 };
 
