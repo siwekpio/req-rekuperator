@@ -111,7 +111,7 @@ Open **Settings → Devices & services → Add integration**, search for **Rekup
 Enable advanced mode in your HA profile if Resources is hidden. Under **Settings → Dashboards → Resources**, add a **JavaScript module** resource:
 
 ```text
-/req-rekuperator/rekuperator-js.js?v=0113
+/req-rekuperator/rekuperator-js.js?v=0114
 ```
 
 For YAML-managed resources, add the same URL to the existing resource configuration. Do not create duplicates.

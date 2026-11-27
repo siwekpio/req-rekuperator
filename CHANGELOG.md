@@ -1,5 +1,13 @@
 # Historia zmian / Changelog
 
+## 0.1.14 — zgodność katalogu Marketplace / Marketplace catalog compatibility
+
+- Przeniesiono dokumenty BRANDING PL/EN z `brand/` do katalogu komponentu; grafiki i warunki licencji pozostają identyczne.
+- Dodano lokalny test zawartości `brand/` i rygorystyczną kontrolę ostrzeżeń BRAND_IMAGES w CI.
+- Zaktualizowano oznaczenia wersji i odnośniki licencyjne. Bez zmian funkcjonalnych.
+
+English: Moved branding documents out of `brand/` into the component directory, retaining artwork and license terms; added local brand directory tests and strict BRAND_IMAGES validation in CI; updated version labels and licensing links. No functional changes.
+
 ## 0.1.13 — dokumentacja Marketplace / Marketplace documentation
 
 - Marketplace jako zalecana metoda instalacji i aktualizacji; przycisk My Home Assistant w README PL/EN.

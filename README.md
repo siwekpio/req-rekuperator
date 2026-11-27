@@ -111,7 +111,7 @@ Otwórz **Ustawienia → Urządzenia i usługi → Dodaj integrację**, wyszukaj
 Włącz tryb zaawansowany w profilu HA, jeśli opcja zasobów nie jest widoczna. W **Ustawienia → Panele → Zasoby** dodaj zasób typu **Moduł JavaScript**:
 
 ```text
-/req-rekuperator/rekuperator-js.js?v=0113
+/req-rekuperator/rekuperator-js.js?v=0114
 ```
 
 Jeżeli zasoby są zarządzane w YAML, dodaj ten sam URL do istniejącej konfiguracji zasobów. Nie twórz duplikatów.
