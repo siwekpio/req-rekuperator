@@ -10,4 +10,4 @@ Pierwsza instalacja: [README](../README.md). Przed zmianami wykonaj pełną kopi
 
 ## Powrót
 
-Przywróć cały zachowany katalog poprzedniej wersji i odpowiadający mu adres zasobu (np. `?v=0111` dla 0.1.11), uruchom ponownie HA i sprawdź odczyty. W razie niespójności odtwórz pełną kopię HA. Powrót z 0.1.12 do 0.1.11 nie został osobno przetestowany. Nie ponawiaj automatycznie poleceń o niepewnym wyniku.
+Przywróć cały zachowany katalog poprzedniej wersji i odpowiadający mu adres zasobu (np. `?v=0111` dla 0.1.11), uruchom ponownie HA i sprawdź odczyty. W razie niespójności odtwórz pełną kopię HA. Cykl 0.1.12 GPL → 0.1.11 MIT → 0.1.12 GPL został sprawdzony w środowisku testowym Home Assistant: zachowano konfigurację, encje i historię. Test miał charakter odczytowy, bez fizycznych poleceń sterujących. Nie gwarantuje zgodności wszystkich konfiguracji i modeli. Nie ponawiaj automatycznie poleceń o niepewnym wyniku.
